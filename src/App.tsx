@@ -1,6 +1,5 @@
 import "./App.css";
 import { ThemeProvider } from "./components/ui/theme-provider";
-import { ThemeToggle } from "./components/ui/theme-toggle";
 import { Home } from "./components/home";
 import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
 import { AppSidebar } from "./components/app-sidebar";
@@ -9,17 +8,14 @@ function App() {
   return (
     <ThemeProvider>
       <SidebarProvider>
-        <div className="flex h-screen">
-          {/* Sidebar fijo/colapsable */}
+        <div className="flex h-screen">          
           <AppSidebar />
-
-          {/* Contenido principal */}
-          <div className="flex flex-1 flex-col">
-            <header className="flex items-center justify-between p-4 border-b">
-              <SidebarTrigger /> {/* botón para abrir/cerrar */}
-              <ThemeToggle /> {/* botón de tema */}
+          
+          <div className="flex flex-1 flex-col min-w-0">
+            <header className="flex items-center justify-between p-5 flex-shrink-0">
+              <SidebarTrigger />
             </header>
-            <main className="flex-1 p-4">
+            <main className="flex-1 p-4 min-w-0 min-h-0 w-[80vw]">
               <Home />
             </main>
           </div>
