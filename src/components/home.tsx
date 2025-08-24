@@ -1,24 +1,64 @@
+import { getResults } from "@/lib/math-utils";
+import { usePLotStore } from "@/store/plot-store";
+import type { CoordsType } from "@/types/coordinates";
+import { useMemo, useState } from "react";
 import Plot from "react-plotly.js";
 
+
+function calcGrapgh(equation: string): CoordsType {
+  const result = getResults(equation);
+  return result;
+}
+
 export function Home() {
-  
+
+  const getEquation = usePLotStore((state)=> state.equation)
+  console.log(getEquation)
+
+  const [equation, setEquation] = useState("x^2");
+  const graphData = useMemo(() => {
+    return calcGrapgh(equation);
+  }, [equation]);
+
+  const plotData = useMemo(
+    () => [
+      {
+        x: graphData.x,
+        y: graphData.y,
+        type: "scatter",
+        mode: "lines+markers",
+        marker: { color: "red" },
+        name: "equation",
+      },
+    ],
+    [graphData]
+  );
+
   return (
     <>
       <div className="flex flex-1 w-full h-full">
         <Plot
-          data={[
-            {
-              x: [1, 2, 3],
-              y: [2, 6, 3],
-              type: "scatter",
-              mode: "lines+markers",
-              marker: { color: "red" },
-            },
-            { type: "bar", x: [1, 2, 3], y: [2, 5, 3] },
-          ]}
+          data={plotData}
           layout={{
-            autosize: true,            
+            autosize: true,
             margin: { l: 40, r: 40, t: 40, b: 40 },
+            xaxis: {
+              zeroline: true,
+              zerolinecolor: "black",
+              zerolinewidth: 2,
+              showgrid: true,
+              gridcolor: "lightgray",
+            },
+            yaxis: {
+              zeroline: true,
+              zerolinecolor: "black",
+              zerolinewidth: 2,
+              showgrid: true,
+              gridcolor: "lightgray",
+            },
+            plot_bgcolor: 'white',
+            paper_bgcolor: 'white',
+            showlegend: true
           }}
           style={{ width: "100%", height: "100%" }}
           useResizeHandler={true}

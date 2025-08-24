@@ -15,7 +15,7 @@ function App() {
             <header className="flex items-center justify-between p-5 flex-shrink-0">
               <SidebarTrigger />
             </header>
-            <main className="flex-1 p-4 min-w-0 min-h-0 w-[80vw]">
+            <main className="flex-1 p-4 min-w-0 min-h-0 w-[85vw]">
               <Home />
             </main>
           </div>

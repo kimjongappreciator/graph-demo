@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/sidebar"
 import { ThemeToggle } from "./ui/theme-toggle"
 
-export function AppSidebar() {
+export function AppSidebar() {  
   return (
     <Sidebar>
       <SidebarHeader />
