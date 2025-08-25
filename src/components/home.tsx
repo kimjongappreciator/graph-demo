@@ -12,10 +12,9 @@ function calcGrapgh(equation: string): CoordsType {
 
 export function Home() {
 
-  const getEquation = usePLotStore((state)=> state.equation)
-  console.log(getEquation)
+  const equation = usePLotStore((state) => state.equation);
+  console.log(equation)
 
-  const [equation, setEquation] = useState("log(x)");
   const graphData = useMemo(() => {
     return calcGrapgh(equation);
   }, [equation]);
@@ -27,7 +26,7 @@ export function Home() {
         y: graphData.y,
         type: "scatter" as const,
         mode: "lines+markers" as const,
-        marker: { color: "red" },
+        marker: { color: "green" },
         name: "equation",
         connectgaps: false
       },
