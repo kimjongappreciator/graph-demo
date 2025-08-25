@@ -8,9 +8,9 @@ export function getResults(input: string) {
     const expr = compile(input);
 
     let prevY: number | null = null;
-    const jumpThreshold = 100; // puedes ajustar este valor
+    const jumpThreshold = 100; 
 
-    for (let i = -10; i <= 10; i += 0.01) {
+    for (let i = -20; i <= 20; i += 0.01) {
       const xVal = parseFloat(i.toFixed(2));
       coords.x.push(xVal);
 

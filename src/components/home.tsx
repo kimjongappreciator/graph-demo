@@ -25,11 +25,11 @@ export function Home() {
       {
         x: graphData.x,
         y: graphData.y,
-        type: "scatter",
-        mode: "lines+markers",
+        type: "scatter" as const,
+        mode: "lines+markers" as const,
         marker: { color: "red" },
         name: "equation",
-        conectgaps: false
+        connectgaps: false
       },
     ],
     [graphData]
