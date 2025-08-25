@@ -15,7 +15,7 @@ export function Home() {
   const getEquation = usePLotStore((state)=> state.equation)
   console.log(getEquation)
 
-  const [equation, setEquation] = useState("x^2");
+  const [equation, setEquation] = useState("log(x)");
   const graphData = useMemo(() => {
     return calcGrapgh(equation);
   }, [equation]);
@@ -29,6 +29,7 @@ export function Home() {
         mode: "lines+markers",
         marker: { color: "red" },
         name: "equation",
+        conectgaps: false
       },
     ],
     [graphData]

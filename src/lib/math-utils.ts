@@ -6,23 +6,37 @@ export function getResults(input: string) {
 
   try {
     const expr = compile(input);
-    
-    for (let i = -10; i <= 10; i += 0.1) {
-      coords.x.push(parseFloat(i.toFixed(1)));
+
+    let prevY: number | null = null;
+    const jumpThreshold = 100; // puedes ajustar este valor
+
+    for (let i = -10; i <= 10; i += 0.01) {
+      const xVal = parseFloat(i.toFixed(2));
+      coords.x.push(xVal);
 
       try {
-        const result = expr.evaluate({ x: i });        
-        coords.y.push(
-          typeof result === "number" && isFinite(result) ? result : null
-        );
+        const result = expr.evaluate({ x: i });
+
+        if (typeof result === "number" && isFinite(result)) {          
+          if (
+            prevY !== null &&
+            Math.abs(result - prevY) > jumpThreshold
+          ) {
+            coords.y.push(null); 
+          } else {
+            coords.y.push(result);
+          }
+          prevY = result;
+        } else {
+          coords.y.push(null);
+          prevY = null;
+        }
       } catch (error) {
-        console.log(error);        
+        console.log(error);
         coords.y.push(null);
+        prevY = null;
       }
     }
-
-    console.log("X values:", coords.x.slice(0, 10)); // Solo mostrar primeros 10
-    console.log("Y values:", coords.y.slice(0, 10));
 
     return coords;
   } catch (error) {
