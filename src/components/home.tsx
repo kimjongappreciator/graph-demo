@@ -1,7 +1,7 @@
 import { getResults } from "@/lib/math-utils";
 import { usePLotStore } from "@/store/plot-store";
 import type { CoordsType } from "@/types/coordinates";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import Plot from "react-plotly.js";
 
 
