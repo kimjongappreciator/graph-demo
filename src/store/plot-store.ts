@@ -1,7 +1,12 @@
 
 import { create } from "zustand";
 
-export const usePLotStore = create((set) => ({
+interface PlotState {
+  equation: string;
+  setEquation: (eq: string) => void;
+}
+
+export const usePLotStore = create<PlotState>((set) => ({
   equation: "x^2",  
-  setEquation: (equation: string) => set({ equation }),  
+  setEquation: (eq: string) => set({ equation:eq }),  
 }));
