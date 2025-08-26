@@ -4,7 +4,7 @@ import { Home } from "./components/home";
 import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
 import { AppSidebar } from "./components/app-sidebar";
 
-function App() {
+function App() {  
   return (
     <ThemeProvider>
       <SidebarProvider>

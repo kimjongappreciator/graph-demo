@@ -12,8 +12,7 @@ function calcGrapgh(equation: string): CoordsType {
 
 export function Home() {
 
-  const equation = usePLotStore((state) => state.equation);
-  console.log(equation)
+  const equation = usePLotStore((state) => state.equation);  
 
   const graphData = useMemo(() => {
     return calcGrapgh(equation);
