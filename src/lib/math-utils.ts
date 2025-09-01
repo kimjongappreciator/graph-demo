@@ -10,7 +10,7 @@ export function getResults(input: string) {
     let prevY: number | null = null;
     const jumpThreshold = 100; 
 
-    for (let i = -20; i <= 20; i += 0.01) {
+    for (let i = -30; i <= 30; i += 0.01) {
       const xVal = parseFloat(i.toFixed(2));
       coords.x.push(xVal);
 
