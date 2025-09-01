@@ -4,15 +4,13 @@ import type { CoordsType } from "@/types/coordinates";
 import { useMemo } from "react";
 import Plot from "react-plotly.js";
 
-
 function calcGrapgh(equation: string): CoordsType {
   const result = getResults(equation);
   return result;
 }
 
 export function Home() {
-
-  const equation = usePLotStore((state) => state.equation);  
+  const equation = usePLotStore((state) => state.equation);
 
   const graphData = useMemo(() => {
     return calcGrapgh(equation);
@@ -27,7 +25,7 @@ export function Home() {
         mode: "lines+markers" as const,
         marker: { color: "green" },
         name: "equation",
-        connectgaps: false
+        connectgaps: false,
       },
     ],
     [graphData]
@@ -35,7 +33,7 @@ export function Home() {
 
   return (
     <>
-      <div className="flex flex-1 w-full h-full">
+      <div className="flex flex-1 w-full h-full bg-white dark:bg-gray-900 p-2 rounded-2xl shadow">
         <Plot
           data={plotData}
           layout={{
@@ -47,6 +45,9 @@ export function Home() {
               zerolinewidth: 2,
               showgrid: true,
               gridcolor: "lightgray",
+              autorange: false,
+              fixedrange: false,
+              range: [0, 10],
             },
             yaxis: {
               zeroline: true,
@@ -54,14 +55,17 @@ export function Home() {
               zerolinewidth: 2,
               showgrid: true,
               gridcolor: "lightgray",
+              autorange: false,
+              fixedrange: false,
+              range: [0, 10],
             },
-            plot_bgcolor: 'white',
-            paper_bgcolor: 'white',
-            showlegend: false
+            plot_bgcolor: "transparent", // <- dejamos transparente para que tome el fondo del div
+            paper_bgcolor: "transparent",
+            showlegend: false,
           }}
           style={{ width: "100%", height: "100%" }}
           useResizeHandler={true}
-          config={{ responsive: true }}
+          config={{ responsive: true, staticPlot: false, autosizable: false }}
         />
       </div>
     </>
