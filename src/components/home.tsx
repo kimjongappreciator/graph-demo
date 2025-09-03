@@ -33,7 +33,8 @@ export function Home() {
 
   return (
     <>
-      <div className="flex flex-1 w-full h-full bg-white dark:bg-gray-900 p-2 rounded-2xl shadow">
+      <div className="flex flex-1 w-[90%] h-full bg-white dark:bg-gray-900 p-2 rounded-2xl shadow">        
+        
         <Plot
           data={plotData}
           layout={{
@@ -65,7 +66,7 @@ export function Home() {
           }}
           style={{ width: "100%", height: "100%" }}
           useResizeHandler={true}
-          config={{ responsive: true, staticPlot: false, autosizable: false }}
+          config={{ responsive: true, staticPlot: false, autosizable: true }}
         />
       </div>
     </>

@@ -1,25 +1,28 @@
 import "./App.css";
 import { ThemeProvider } from "./components/ui/theme-provider";
 import { Home } from "./components/home";
-import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
 import { AppSidebar } from "./components/app-sidebar";
 
-function App() {  
+function App() {
   return (
     <ThemeProvider>
       <SidebarProvider>
-        <div className="flex h-screen">          
+        <SidebarInset>
+        <div className="flex h-screen">
           <AppSidebar />
-          
-          <div className="flex flex-1 flex-col min-w-0 w-[80vw]">
+          <div className="flex flex-1 flex-col">            
             <header className="flex items-center justify-between p-5 flex-shrink-0">
               <SidebarTrigger />
             </header>
-            <main className="flex-1 p-4 min-w-0 min-h-0 w-full justify-center">
+
+            {/* Asegúrate de que este div también use flex y flex-1 */}
+            <main className="flex flex-1 p-4 w-full justify-center">              
               <Home />
             </main>
           </div>
         </div>
+        </SidebarInset>
       </SidebarProvider>
     </ThemeProvider>
   );
