@@ -17,7 +17,7 @@ function App() {
             </header>
 
             {/* Asegúrate de que este div también use flex y flex-1 */}
-            <main className="flex flex-1 p-4 w-full justify-center">              
+            <main className="flex flex-1 p-4 w-[full] ">              
               <Home />
             </main>
           </div>

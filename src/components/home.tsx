@@ -33,7 +33,7 @@ export function Home() {
 
   return (
     <>
-      <div className="flex flex-1 w-[90%] h-full bg-white dark:bg-gray-900 p-2 rounded-2xl shadow">        
+      <div className="flex flex-1 w-auto h-full bg-white dark:bg-gray-900 p-2 rounded-2xl shadow justify-center">        
         
         <Plot
           data={plotData}
